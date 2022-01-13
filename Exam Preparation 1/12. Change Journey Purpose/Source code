@@ -1,0 +1,20 @@
+CREATE PROC usp_ChangeJourneyPurpose(@JourneyId INT, @NewPurpose VARCHAR(11))
+AS
+    DECLARE @ID INT =
+    (SELECT j.Id FROM Journeys AS j
+        WHERE j.Id = @JourneyId)
+
+    DECLARE @Purpose VARCHAR(11) =
+    (SELECT j.Purpose FROM Journeys AS j
+        WHERE j.Purpose = @NewPurpose AND j.Id = @JourneyId)
+            
+    IF(@ID IS NULL)
+        THROW 50001, 'The journey does not exist!', 1
+    IF(@Purpose = @NewPurpose)
+        THROW 50002, 'You cannot change the purpose!', 1
+    IF(@ID IS NOT NULL AND @Purpose != @NewPurpose)
+        BEGIN
+            UPDATE Journeys
+            SET Purpose = @NewPurpose
+            WHERE Id = @JourneyId
+        END
