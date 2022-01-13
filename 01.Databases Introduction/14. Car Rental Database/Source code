@@ -1,0 +1,87 @@
+CREATE TABLE Categories
+(
+    Id INT PRIMARY KEY IDENTITY,
+    CategoryName VARCHAR(50) NOT NULL,
+    DailyRate INT NOT NULL,
+    WeeklyRate INT NOT NULL,
+    MonthlyRate INT NOT NULL,
+    WeekendRate INT NOT NULL
+)
+
+INSERT INTO Categories VALUES
+('e', 1, 5, 3, 1),
+('e', 2, 2, 9, 6),
+('e', 3, 4, 7, 7)
+
+CREATE TABLE Cars
+(
+    Id INT PRIMARY KEY IDENTITY,
+    PlateNumber INT NOT NULL,
+    Manufacturer VARCHAR(50) NOT NULL,
+    Model VARCHAR(50) NOT NULL,
+    CarYear INT NOT NULL,
+    CategoryId INT NOT NULL,
+    Doors VARCHAR(50),
+    Picture VARBINARY(MAX),
+    Condition VARCHAR(50) NOT NULL,
+    Available BIT
+)
+
+INSERT INTO Cars VALUES
+(1, 'Ford', 'Ka', 2015, 1, NULL, NULL, 'new', 1),
+(2, 'Hyundai', 'i20', 2016, 2, NULL, NULL, 'new', 0),
+(3, 'Opel', 'Tigra', 2002, 3, NULL, NULL, 'old', 1)
+
+CREATE TABLE Employees
+(
+    Id INT PRIMARY KEY IDENTITY,
+    FirstName VARCHAR(50) NOT NULL,
+    LastName VARCHAR(50) NOT NULL,
+    Title VARCHAR(50),
+    Notes VARCHAR(MAX)
+)
+
+INSERT INTO Employees VALUES
+('Sevdalina', 'Zanova', NULL, NULL),
+('Emil', 'Zanov', NULL, NULL),
+('Martin', 'Zanov', NULL, NULL)
+
+CREATE TABLE Customers
+(
+    Id INT PRIMARY KEY IDENTITY,
+    DriverLicenceNumber INT NOT NULL,
+    FullName VARCHAR(50) NOT NULL,
+    [Address] VARCHAR(MAX),
+    City VARCHAR(50) NOT NULL,
+    ZIPCode SMALLINT NOT NULL,
+    Notes VARCHAR(MAX)
+)
+
+INSERT INTO Customers VALUES
+(123456, 'Sevdalina Zanova', NULL, 'Sofia', 1000, NULL),
+(678901, 'Emil Zanov', NULL, 'Sofia', 1000, NULL),
+(901234, 'Martin Zanov', NULL, 'Sofia', 1000, NULL)
+
+CREATE TABLE RentalOrders
+(
+    Id INT PRIMARY KEY IDENTITY,
+    EmployeeId INT NOT NULL,
+    CustomerId INT NOT NULL,
+    CarId INT NOT NULL,
+    TankLevel DECIMAL(15,2) NOT NULL,
+    KilometrageStart INT NOT NULL,
+    KilometrageEnd INT NOT NULL,
+    TotalKilometrage INT NOT NULL,
+    StartDate DATETIME NOT NULL,
+    EndDate DATETIME NOT NULL,
+    TotalDays INT NOT NULL,
+    RateApplied INT,
+    TaxRate DECIMAL(15,2) NOT NULL,
+    OrderStatus BIT NOT NULL,
+    Notes VARCHAR(MAX)
+)
+
+INSERT INTO RentalOrders VALUES
+(1, 1, 55, 20.05, 500, 1000, 1000, 2/02/2020, 4/02/2020, 2, 5, 100, 1, NULL),
+(2, 2, 60, 30.40, 350, 700, 700, 8/03/2020, 12/03/2020, 5, 5, 400, 2, NULL),
+(3, 3, 65, 40.60, 200, 600, 600, 13/09/2020, 13/09/2020, 1, 5, 50, 3, NULL)
