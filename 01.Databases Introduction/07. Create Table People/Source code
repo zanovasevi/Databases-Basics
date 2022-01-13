@@ -1,0 +1,18 @@
+CREATE TABLE People
+(
+    Id INT PRIMARY KEY,
+    [Name] NVARCHAR(200) NOT NULL,
+    Picture VARBINARY (2000),
+    Height FLOAT (2),
+    [Weight] FLOAT (2),
+    Gender CHAR CHECK(Gender = 'm' OR Gender = 'f') NOT NULL,
+    Birthdate DATE NOT NULL,
+    Biography NVARCHAR(MAX)
+)
+
+INSERT INTO People(Id, [Name], Picture, Height, [Weight], Gender, Birthdate, Biography) VALUES
+(1,'Sevdalina', NULL, 100, 50, 'f', '1990/04/03', 'student'),
+(2, 'Emil', NULL, 120, 60, 'm', '1975/08/14', 'sound boy'),
+(3, 'Zahary', NULL, 140, 70, 'm', '1966/08/01', 'lighter'),
+(4, 'Silvia', NULL, 90, 45, 'f', '1996/12/12', 'student'),
+(5, 'Maria', NULL, 100, 50, 'f', '2006/02/18', 'teacher')
