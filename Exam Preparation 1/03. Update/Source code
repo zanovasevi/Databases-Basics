@@ -1,0 +1,4 @@
+UPDATE Tickets
+SET Price += Price * 0.13
+FROM Flights
+WHERE Destination = 'Carlsbad'
