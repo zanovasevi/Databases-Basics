@@ -1,0 +1,16 @@
+CREATE TABLE Users
+(
+    Id BIGINT PRIMARY KEY IDENTITY(1,1),
+    Username VARCHAR(30) UNIQUE NOT NULL,
+    [Password] VARCHAR(26) NOT NULL,
+    ProfilePicture VARBINARY(MAX),
+    LastLoginTime DATETIME,
+    IsDeleted BIT NOT NULL
+)
+
+INSERT INTO Users (Username, [Password], ProfilePicture, LastLoginTime, IsDeleted) VALUES
+('zanovasevi', 'strongpassword', NULL, '04/04/2020', 0),
+('zanovemo', 'pass123', NULL, '05/05/2020', 1),
+('kakatraka', 'pass567', NULL , '06/06/2020', 0),
+('mecho', 'string897', NULL, '03/03/2020', 1),
+('koteto', 'email456', NULL, '02/02/2020', 0)
