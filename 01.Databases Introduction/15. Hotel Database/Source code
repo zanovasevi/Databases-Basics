@@ -1,0 +1,134 @@
+--CREATE DATABASE Hotel
+
+--	Employees (Id, FirstName, LastName, Title, Notes)
+
+CREATE TABLE Employees
+(
+    Id INT PRIMARY KEY,
+    FirstName VARCHAR(90) NOT NULL,
+    LastName VARCHAR(90) NOT NULL,
+    Title VARCHAR(50) NOT NULL,
+    Notes VARCHAR(MAX)
+)
+
+INSERT INTO Employees (Id, FirstName, LastName, Title, Notes) VALUES
+(1, 'Gosho', 'Goshov', 'CEO', NULL),
+(2, 'Petar', 'Petrov', 'CFO', NULL),
+(3, 'Stoyan', 'Stoyanov', 'CTO', NULL)
+
+--	Customers (AccountNumber, FirstName, LastName, PhoneNumber, EmergencyName, EmergencyNumber, Notes)
+
+CREATE TABLE Customers
+(
+    AccountNumber INT PRIMARY KEY,
+    FirstName VARCHAR(90) NOT NULL,
+    LastName VARCHAR(90) NOT NULL,
+    PhoneNumber CHAR(10) NOT NULL,
+    EmergencyName VARCHAR(90) NOT NULL,
+    EmergencyNumber CHAR(10) NOT NULL,
+    Notes VARCHAR(MAX)
+)
+
+INSERT INTO Customers VALUES
+(120, 'G', 'P', '1234567890', 'T', '1234567890', NULL),
+(121, 'E', 'R', '1234567890', 'T', '1234567890', NULL),
+(122, 'H', 'T', '1234567890', 'T', '1234567890', NULL)
+
+--	RoomStatus (RoomStatus, Notes)
+
+CREATE TABLE RoomStatus
+(
+    RoomStatus VARCHAR(20) NOT NULL,
+    Notes VARCHAR(MAX)
+)
+
+INSERT INTO RoomStatus VALUES
+('free', NULL),
+('busy', NULL),
+('cleaning', NULL)
+
+--	RoomTypes (RoomType, Notes)
+
+CREATE TABLE RoomTypes
+(
+    RoomType VARCHAR(20) NOT NULL,
+    Notes VARCHAR(MAX)
+)
+
+INSERT INTO RoomTypes VALUES
+('apartment', NULL),
+('single room', NULL),
+('studio', NULL)
+
+--	BedTypes (BedType, Notes)
+
+CREATE TABLE BedTypes
+(
+    BedType VARCHAR(20) NOT NULL,
+    Notes VARCHAR(MAX)
+)
+
+INSERT INTO BedTypes VALUES
+('single', NULL),
+('double', NULL),
+('triple', NULL)
+
+--	Rooms (RoomNumber, RoomType, BedType, Rate, RoomStatus, Notes)
+
+CREATE TABLE Rooms
+(
+    RoomNumber INT PRIMARY KEY,
+    RoomType VARCHAR(20) NOT NULL,
+    BedType VARCHAR(20) NOT NULL,
+    Rate INT,
+    RoomStatus VARCHAR(20) NOT NULL,
+    Notes VARCHAR(MAX)
+)
+
+
+INSERT INTO Rooms VALUES
+(120, 'apartment','triple', 10, 'free', NULL),
+(121, 'single room','single', 9, 'busy', NULL),
+(122, 'studio','double', 8, 'cleaning', NULL)
+
+--•	Payments (Id, EmployeeId, PaymentDate, AccountNumber, FirstDateOccupied, LastDateOccupied, TotalDays, AmountCharged, TaxRate, TaxAmount, PaymentTotal, Notes)
+
+CREATE TABLE Payments
+(
+    Id INT PRIMARY KEY,
+    EmployeeId INT NOT NULL,
+    PaymentDate DATETIME NOT NULL,
+    AccountNumber INT NOT NULL,
+    FirstDateOccupied DATETIME NOT NULL,
+    LastDateOccupied DATETIME NOT NULL,
+    TotalDays INT NOT NULL,
+    AmountCharged DECIMAL(15,2),
+    TaxRate INT,
+    TaxAmount INT,
+    PaymentTotal DECIMAL (15,2),
+    Notes VARCHAR(MAX)
+)
+
+INSERT INTO Payments VALUES
+(1, 1, GETDATE(), 120, '5/5/2012', '3/8/2012', 3, 450.23, NULL, NULL, 600.34, NULL),
+(2, 1, GETDATE(), 120, '6/5/2012', '5/8/2012', 3, 45.43, NULL, NULL, 1000.56, NULL),
+(3, 1, GETDATE(), 120, '7/5/2012', '8/8/2012', 3, 50.83, NULL, NULL, 356.78, NULL)
+
+--•	Occupancies (Id, EmployeeId, DateOccupied, AccountNumber, RoomNumber, RateApplied, PhoneCharge, Notes)
+
+CREATE TABLE Occupancies
+(
+    Id INT PRIMARY KEY,
+    EmployeeId INT NOT NULL,
+    DateOccupied DATETIME NOT NULL,
+    AccountNumber INT NOT NULL,
+    RoomNumber INT NOT NULL,
+    RateApplied INT,
+    PhoneCharge DECIMAL (15,2),
+    Notes VARCHAR(MAX)
+)
+
+INSERT INTO Occupancies VALUES
+(1, 120, GETDATE(), 120, 120, 0, 0, NULL),
+(2, 520, GETDATE(), 121, 120, 0, 0, NULL),
+(3, 420, GETDATE(), 122, 120, 0, 0, NULL)
