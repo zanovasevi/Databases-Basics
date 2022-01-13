@@ -1,0 +1,3 @@
+UPDATE Jobs
+SET MechanicID = 3, [Status] = 'In Progress'
+WHERE [Status] = 'Pending'
