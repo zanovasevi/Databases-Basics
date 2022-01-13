@@ -1,0 +1,66 @@
+--•	Directors (Id, DirectorName, Notes)
+--•	Genres (Id, GenreName, Notes)
+--•	Categories (Id, CategoryName, Notes)
+--•	Movies (Id, Title, DirectorId, CopyrightYear, Length, GenreId, CategoryId, Rating, Notes)
+
+CREATE TABLE Directors
+(
+    Id INT PRIMARY KEY IDENTITY,
+    DirectorName VARCHAR(50) NOT NULL,
+    Notes VARCHAR(MAX)
+)
+
+INSERT INTO Directors VALUES
+('sevdalina', NULL),
+('emil', NULL),
+('zahary', NULL),
+('desislava', NULL),
+('martin', NULL)
+
+CREATE TABLE Genres
+(
+    Id INT PRIMARY KEY IDENTITY,
+    GenreName VARCHAR(50) NOT NULL,
+    Notes VARCHAR(MAX)
+)
+
+INSERT INTO Genres VALUES
+('fantastic', NULL),
+('action', NULL),
+('comedy', NULL),
+('comedy', NULL),
+('animation', NULL)
+
+CREATE TABLE Categories
+(
+    Id INT PRIMARY KEY IDENTITY,
+    CategoryName VARCHAR(50) NOT NULL,
+    Notes VARCHAR(MAX)
+)
+
+INSERT INTO Categories VALUES
+('dk', NULL),
+('op', NULL),
+('er', NULL),
+('tr', NULL),
+('kl', NULL)
+
+CREATE TABLE Movies
+(
+    Id INT PRIMARY KEY IDENTITY,
+    Title VARCHAR(50) NOT NULL,
+    DirectorId INT NOT NULL,
+    CopyrightYear DATETIME NOT NULL,
+    [Length] DECIMAL NOT NULL,
+    GenreId INT NOT NULL,
+    CategoryId INT NOT NULL,
+    Rating INT,
+    Notes VARCHAR(MAX)
+)
+
+INSERT INTO Movies VALUES
+('Kambanka', 1, '4/04/2020', '1.45', 1, 1, NULL, NULL),
+('King Kong', 2, '2/09/2002', 2.5, 2, 2, NULL, NULL),
+('Transporter', 3, '1/05/2007', 1.3, 3, 3, NULL, NULL),
+('Maugly', 4, '3/10/1995', 2.15, 4, 4, NULL, NULL),
+('Az i ti', 5, '4/12/1998', 1.35, 5, 5, NULL, NULL)
