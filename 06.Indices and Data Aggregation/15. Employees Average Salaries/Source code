@@ -1,0 +1,15 @@
+SELECT * INTO Emplo FROM Employees
+WHERE Salary > 30000
+
+DELETE FROM Emplo
+WHERE ManagerID = 42
+
+--SELECT * FROM Emplo
+--WHERE DepartmentID = 1
+
+UPDATE Emplo
+SET Salary += 5000
+WHERE DepartmentID = 1
+
+SELECT DepartmentID, AVG(Salary) AS AverageSalary FROM Emplo
+GROUP BY DepartmentID
